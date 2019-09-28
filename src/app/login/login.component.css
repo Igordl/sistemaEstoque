@@ -1,0 +1,73 @@
+
+
+.imageonly {
+
+
+  background-image: url(http://blog.aartgraf.com.br/wp-content/uploads/2018/05/2222.jpg);
+}
+
+#myDisplay{
+  margin-top: 5%;
+  margin-left: 30%;
+  margin-right: 30%;
+  align-content: center;
+  background-color: rgba(248, 248, 248, 0.877);
+  border-radius: 10px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.205);
+  height: 350px;
+}
+#center {
+  margin-top: 5%;
+  margin-left: 40%;
+  margin-right: 30%;
+}
+#customBtn {
+  display: inline-block;
+  background: rgb(226, 226, 226);
+  color: #444;
+  width: 190px;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+  margin-left: 33%;
+
+}
+#customBtn:hover {
+  cursor: pointer;
+}
+span.label {
+  font-family: serif;
+  font-weight: normal;
+}
+span.icon {
+  background-image: url(https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwig0-H0j_LkAhX1CrkGHYBQAFsQjRx6BAgBEAQ&url=https%3A%2F%2Ficons8.com%2Ficons%2Fset%2Fgoogle&psig=AOvVaw0DWmzAW0pXitskgB9BDee7&ust=1569712202273438) transparent 5px 50% no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.buttonText {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 42px;
+  padding-right: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.bt {
+  border: 0;
+  padding: 10px;
+  width: auto;
+  height: 50px;
+  display: inline-block;
+  margin-left:  30%;
+  margin-right: 30%;
+  cursor: pointer;
+  border-radius: 4px;
+}

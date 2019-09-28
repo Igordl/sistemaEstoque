@@ -1,0 +1,39 @@
+
+<div class="imageonly">
+<span>.</span>
+
+
+<div id="myDisplay" >
+
+
+<!-- In the callback, you would hide the gSignInWrapper element on a
+successful sign in -->
+  <div id="gSignInWrapper" class="loginContainer" >
+      <br/>
+      <h4 class="label row" id="center">Estoque CodeX</h4>
+    <span class="label row" id="center">Sign in with:</span>
+    <br/>
+    <button (click)="signInWithGoogle()" id="customBtn" class="customGPlusSignIn row">
+      <span class="buttonText">Google</span>
+    </button>
+    <br/>
+    <br/>
+  <div *ngIf="loggedIn === true">
+      <button class='bt' type='submit' (click)="entrar()"  >Logar com: {{ user.email }}</button>
+
+  </div>
+
+  </div>
+
+
+
+</div>
+<br/><br/>
+<br/>
+<br/>
+.
+<h3>.</h3>
+
+</div>
+
+

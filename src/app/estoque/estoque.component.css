@@ -1,0 +1,12 @@
+#itemView {
+   min-width: 100%;
+   height: 200px;
+   background-color: rgba(236, 236, 236, 0.425);
+   border-radius: 10px;
+
+}
+
+.infoItem {
+  margin-left: auto;
+}
+

@@ -1,0 +1,57 @@
+<mat-toolbar color="grey" >
+  <div style="margin-left: 10%; block-size: 50px">
+      <button mat-menu-item [matMenuTriggerFor]="menuRef" >
+          Categorias
+      </button>
+      <mat-menu #menuRef="matMenu">
+          <button mat-menu-item (click)="trocaCategoria('Tudo')"  >
+              Tudo
+          </button>
+          <button mat-menu-item (click)="trocaCategoria('Celular')"  >
+              Celular
+          </button>
+          <button mat-menu-item (click)="trocaCategoria('Eletrodoméstico')">
+              Eletrodoméstico
+          </button>
+          <button mat-menu-item (click)="trocaCategoria('Tv')">
+              Tv
+          </button>
+          <button mat-menu-item (click)="trocaCategoria('Videogame')">
+              Videogame
+          </button>
+      </mat-menu>
+  </div>
+  <div>
+    <img src="" alt="">
+  </div>
+</mat-toolbar>
+
+
+<div class="row">
+<h1> </h1>
+<h1> </h1>
+<h1> </h1>
+<div class="col-sm-2"></div>
+
+<div class="col-sm-8" >
+  <button class="btn btn-success" style="min-width: 100%; margin-block: 20px">Inserir Item</button>
+  <div class="row" *ngFor="let item of itensEstoque" style="margin-block: 10px" >
+
+      <div *ngIf="item.nomeCategoria === categoria || categoria === 'Tudo'" id="itemView" >
+        <div class="row">
+          <img class="col-sm-3" src="{{item.imagemItem}}" alt="{{item.nomeItem}}">
+          <div class="col-sm-5 infoItem">
+            <span>{{item.nomeCategoria}}</span><br/>
+            <span>{{item.nomeItem}}</span><br/>
+            <span>Qnt. Itens: {{item.qntEstoque}}</span>
+
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+</div>
+<div class="col-sm-2"></div>
+
+</div>
