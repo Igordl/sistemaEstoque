@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     if(this.loggedIn === true){
     this.router.navigate(['/estoque', this.user.authToken]);
     }
-    console.log('Token de autenticação do usuario: ' + this.user.authToken);
+    console.log(this.user);
   }
 
 
