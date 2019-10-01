@@ -22,12 +22,13 @@
 
       </mat-menu>
   </div>
-  <div style="block-size: 50px; margin-left: 700px">
-  <button mat-menu-item data-target="#myModal" data-toggle="modal" (click)="blankItem()" >
+  <div style="block-size: 50px; margin-left: 660px">
+      <button mat-menu-item data-target="#myModal" data-toggle="modal" (click)="blankItem()" >
       Adicionar Item
   </button>
   </div>
-  <div style="block-size: 50px; margin-left: 70px">
+  <img src="{{user.photoUrl}}" alt="" style="height: 30px; border-radius: 15px; margin-left: 40px" (click)="signOut()">
+  <div style="block-size: 50px; margin-left: 5px">
       <button mat-menu-item (click)="signOut()" >
           Sair
       </button>
@@ -85,20 +86,20 @@
 
   <div class="row" *ngFor="let item of itensEstoque" style="margin-block: 10px" >
 
-      <div *ngIf="item.nomeCategoria === categoria || categoria === 'Tudo'" id="itemView" data-toggle="modal" data-target="#itemModal">
-
-        <div class="row" >
+    <div [ngStyle]="{'background-color':getColor(item.qntItem)}" *ngIf="item.nomeCategoria === categoria || categoria === 'Tudo'" id="itemView" data-toggle="modal" data-target="#itemModal">
+      <div class="row">
           <img class="col-sm-3 imgDiv"  src="{{item.imagemItem}}" alt="{{item.nomeItem}}"  (click)="setItemAtual(item)" >
           <div class="col-sm-5 infoItem" >
-            <h4  (click)="setItemAtual(item)" >{{item.nomeItem}}</h4><br/>
-            <div *ngIf="item.click" >
-
-                <span>R$ {{item.valorItem}}</span><br/>
-                <span>{{item.qntItem}}</span>
-
-                <button class="btn btn-danger" data-target="#removerModal" data-toggle="modal" >
-                  <span>Remover item</span>
-                </button><!-- Modal -->
+              <h4  (click)="setItemAtual(item)" >{{item.nomeItem}}</h4><br/>
+              <div *ngIf="item.click" style="padding: 10px" >
+                  <span>R$ {{item.valorItem}}</span><br/>
+                  <span>Qnt. Itens:
+                  <input type="number" [(ngModel)]="item.qntItem">
+                  <button class="btn btn-primary" (click)="sortEstoque()">Atualizar Item</button>
+                </span><br/>
+                <button class="btn btn-danger" data-target="#removerModal" data-toggle="modal">
+                    <span>Remover item</span>
+                </button>
                 <div id="removerModal" class="modal fade" role="dialog">
                   <div class="modal-dialog col-sm-8">
 
@@ -130,5 +131,4 @@
 </div>
 <div class="col-sm-2"></div>
 
-</div>
 
