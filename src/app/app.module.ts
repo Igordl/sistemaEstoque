@@ -11,7 +11,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
-
+import { FormsModule }   from '@angular/forms';
 
 let config = new AuthServiceConfig([
   {
@@ -37,7 +37,8 @@ export function provideConfig() {
     MatMenuModule,
     MatToolbarModule,
     MatAutocompleteModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
   providers: [
     {

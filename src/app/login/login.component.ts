@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-
      }
 
 
@@ -40,8 +39,9 @@ export class LoginComponent implements OnInit {
 
   entrar(){
     if(this.loggedIn === true){
-    this.router.navigate(['/estoque']);
+    this.router.navigate(['/estoque', this.user.authToken]);
     }
+    console.log('Token de autenticação do usuario: ' + this.user.authToken);
   }
 
 

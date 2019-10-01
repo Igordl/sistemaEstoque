@@ -1,5 +1,5 @@
 <mat-toolbar color="grey" >
-  <div style="margin-left: 10%; block-size: 50px">
+  <div style="margin-left: 15%; block-size: 50px">
       <button mat-menu-item [matMenuTriggerFor]="menuRef" >
           Categorias
       </button>
@@ -19,10 +19,56 @@
           <button mat-menu-item (click)="trocaCategoria('Videogame')">
               Videogame
           </button>
+
       </mat-menu>
   </div>
-  <div>
-    <img src="" alt="">
+  <div style="block-size: 50px; margin-left: 700px">
+  <button mat-menu-item data-target="#myModal" data-toggle="modal" (click)="blankItem()" >
+      Adicionar Item
+  </button>
+  </div>
+  <div style="block-size: 50px; margin-left: 70px">
+      <button mat-menu-item (click)="signOut()" >
+          Sair
+      </button>
+      </div>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog col-sm-8">
+
+      <!-- Modal content-->
+      <div class="modal-content" >
+        <div class="modal-header">
+            <h4 class="modal-title">Inserindo Item</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        </div>
+
+        <div class="modal-body" style="padding-block: 20px">
+          <form>
+            <input style="margin-block: 5px" id="nomeItem" name="nomeItem" [(ngModel)]="itemAtual.nomeItem"  type="text" placeholder="Nome"><br/>
+            <select id="categoriaItem" name="categoria" style="width: 256px">
+                <option value="Celular">Celular</option>
+                <option value="Eletrodoméstico">Eletrodoméstico</option>
+                <option value="Tv">Tv</option>
+                <option value="Videogame">videogame</option>
+              </select><br/>
+           <!--
+             <input style="margin-block: 5px"name="categoriaItem" [(ngModel)]="itemAtual.nomeCategoria"  type="text" placeholder="Categoria"><br/>
+            -->
+            <input style="margin-block: 5px"name="valorItem" [(ngModel)]="itemAtual.valorItem" type="text" placeholder="Preço"><br/>
+            <input style="margin-block: 5px"name="qntItem" [(ngModel)]="itemAtual.qntItem" type="text" placeholder="Quantidade estoque"><br/>
+            <input style="margin-block: 5px"name="imagemItem" [(ngModel)]="itemAtual.imagemItem"  type="text" placeholder="Link imagem"><br/>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" *ngIf="itemAtual.nomeItem !== '' && itemAtual.valorItem !== '' && itemAtual.qntItem !== '' && itemAtual.imagemItem !== ''"  data-dismiss="modal" (click)="addItem(itemAtual)" >Inserir</button>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </mat-toolbar>
 
@@ -34,18 +80,48 @@
 <div class="col-sm-2"></div>
 
 <div class="col-sm-8" >
-  <button class="btn btn-success" style="min-width: 100%; margin-block: 20px">Inserir Item</button>
+  <br/>
+  <h3>{{categoria}}</h3>
+
   <div class="row" *ngFor="let item of itensEstoque" style="margin-block: 10px" >
 
-      <div *ngIf="item.nomeCategoria === categoria || categoria === 'Tudo'" id="itemView" >
-        <div class="row">
-          <img class="col-sm-3" src="{{item.imagemItem}}" alt="{{item.nomeItem}}">
-          <div class="col-sm-5 infoItem">
-            <span>{{item.nomeCategoria}}</span><br/>
-            <span>{{item.nomeItem}}</span><br/>
-            <span>Qnt. Itens: {{item.qntEstoque}}</span>
+      <div *ngIf="item.nomeCategoria === categoria || categoria === 'Tudo'" id="itemView" data-toggle="modal" data-target="#itemModal">
 
+        <div class="row" >
+          <img class="col-sm-3 imgDiv"  src="{{item.imagemItem}}" alt="{{item.nomeItem}}"  (click)="setItemAtual(item)" >
+          <div class="col-sm-5 infoItem" >
+            <h4  (click)="setItemAtual(item)" >{{item.nomeItem}}</h4><br/>
+            <div *ngIf="item.click" >
+
+                <span>R$ {{item.valorItem}}</span><br/>
+                <span>{{item.qntItem}}</span>
+
+                <button class="btn btn-danger" data-target="#removerModal" data-toggle="modal" >
+                  <span>Remover item</span>
+                </button><!-- Modal -->
+                <div id="removerModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog col-sm-8">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" >
+                      <div class="modal-header">
+                          <h4 class="modal-title">Você realmente deseja remover este item?</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="removeItem(item)" >Sim</button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+            </div>
           </div>
+
         </div>
 
       </div>
@@ -55,3 +131,4 @@
 <div class="col-sm-2"></div>
 
 </div>
+
